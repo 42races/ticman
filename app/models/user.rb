@@ -13,11 +13,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def send_confirmation_email!
-    token = Digest::SHA1.hexdigest(self.email) + SecureRandom.uuid.gsub('-', '')
-  end
-
-
   # class methods
 
     def self.build_new_user(user_params)
@@ -25,8 +20,9 @@ class User < ActiveRecord::Base
         u.email = user_params[:email].downcase
         u.name  = user_params[:name]
         u.role  = user_params[:role]
-        u.password              = Service.random_key
-        u.password_confirmation = u.password
+        u.password                  = Service.random_key
+        u.password_confirmation     = u.password
+        u.email_confirmation_token  = Service.reference_code(u.email)
       end
     end
   # end of class methods

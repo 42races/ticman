@@ -20,6 +20,7 @@ describe RegistrationsController do
     assert_equal true,  assigns(:user).admin?
     assert_equal 'Foo', assigns(:user).name
     assert_equal 'test@test.com', assigns(:user).email
+    assert assigns(:user).email_confirmation_token.present?
   end
 
 end

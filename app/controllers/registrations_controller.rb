@@ -11,7 +11,6 @@ class RegistrationsController < ApplicationController
       # First user will be the admin user of the organization
       # he will have to click the email confirmation to activate
       # organization account.
-      @user.send_confirmation_email!
     else
       render 'new'
     end
