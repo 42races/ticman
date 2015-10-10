@@ -33,7 +33,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 gem 'twitter-bootstrap-rails'
 gem 'slim'
-gem 'devise'
 
 group :development do
   gem 'letter_opener'
