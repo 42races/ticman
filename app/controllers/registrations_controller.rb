@@ -22,6 +22,10 @@ class RegistrationsController < ApplicationController
 
     if @user.present?
       if @user.confirm_email!
+
+        # create an organization and add the user as admin to organization.
+        Organization.provision!(@user)
+
         redirect_to edit_password_path(@user), notice: 'Email confimed successfully'
       else
         redirect_to root_path, notice: 'Email already confirmed please login.'

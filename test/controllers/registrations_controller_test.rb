@@ -46,7 +46,7 @@ describe RegistrationsController do
       must_render_template :wrong_confirmation_token
     end
 
-    it 'should redirect to change password page' do
+    it 'should redirect to change password page, and an organization will be created with the user as admin' do
       user = users(:admin)
       user.update_attribute(:email_confirmation_token, Service.reference_code(user.email))
 
@@ -56,6 +56,7 @@ describe RegistrationsController do
 
       must_respond_with :redirect
       assert_equal response.redirect_url, edit_password_url(user)
+      assert assigns(:user).organization.present?
     end
 
     it 'should redirect to root url if email already confimed' do

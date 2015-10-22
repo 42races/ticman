@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :password, :password_confirmation
 
+  belongs_to :organization
+
   validates :role, presence: true
   validates :role, inclusion: {
     in: Role::ROLES
