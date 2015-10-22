@@ -21,3 +21,4 @@
 
 en:
   app_name: "Tic Metric"
+  email_confirmation_sub: 'Please confirm your email address'

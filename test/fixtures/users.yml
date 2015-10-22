@@ -1,0 +1,4 @@
+admin:
+  name: test
+  email: <%= "test#{rand}@test.com" %>
+  role: admin

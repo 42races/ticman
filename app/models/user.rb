@@ -27,4 +27,11 @@ class User < ActiveRecord::Base
     end
   # end of class methods
 
+  def confirm_email!
+    self.touch(:email_confirmed_at) if !email_confirmed?
+  end
+
+  def email_confirmed?
+    self.email_confirmed_at.present?
+  end
 end
