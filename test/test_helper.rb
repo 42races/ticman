@@ -10,6 +10,8 @@ require 'minitest/autorun'
 
 # Uncomment for awesome colorful output
 require "minitest/pride"
+require 'simplecov'
+SimpleCov.start 'rails'
 
 class ActiveSupport::TestCase
     ActiveRecord::Migration.check_pending!
