@@ -6,8 +6,8 @@ class PasswordsController < ApplicationController
   end
 
   def update
-    if @user.update_attribute(password_params)
-      redirect_to home_page, notice: 'Password updated successfully'
+    if @user.update_attributes(password_params)
+      redirect_to home_path, notice: 'Password updated successfully'
     else
       render :edit
     end
@@ -16,6 +16,10 @@ class PasswordsController < ApplicationController
   private
 
   def load_user
-    @user = User.where(id: params[:id])
+    @user = User.where(id: params[:id]).first
+  end
+
+  def password_params
+    params.require(:user).permit(:password, :password_confirmation)
   end
 end
