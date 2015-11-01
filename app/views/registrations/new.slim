@@ -1,11 +1,14 @@
-h1 Registrations#new
-p Find me in app/views/registrations/new.html.erb
+.section
+  h4 Create organization
+  .row
+    = form_tag registrations_path, method: :post , class: 'col s12' do
 
-= form_tag registrations_path, method: :post do
-  p
-    label Name:
-    = text_field_tag :name, '', name: 'user[name]'
-  p
-    label Email:
-    = text_field_tag :email, '', name: 'user[email]'
-  p= submit_tag 'Create'
+      .input-field.col.s12
+        = text_field_tag :name, '', name: 'user[name]', id: 'name'
+        label for='name' Organization / Company name
+
+      .input-field.col.s12
+        = email_field_tag :email, '', name: 'user[email]', class: 'validate', id: 'email'
+        label for='email' Email
+
+      button class="btn waves-effect waves-light" type="submit" name="action" Create
