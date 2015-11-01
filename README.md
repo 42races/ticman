@@ -1,4 +1,4 @@
-# ticmetric
+# Ticman
 Business Intelligence Analysis Tool
 
 # UI framework
