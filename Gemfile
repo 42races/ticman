@@ -33,6 +33,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 gem 'twitter-bootstrap-rails'
 gem 'slim'
+gem 'dotenv-rails', :require => 'dotenv/rails-now'
 
 group :development do
   gem 'letter_opener'
@@ -46,7 +47,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  # gem 'spring'
   gem 'pry'
   gem 'guard'
   gem 'guard-minitest'
