@@ -22,3 +22,8 @@
 en:
   app_name: "Tic Metric"
   email_confirmation_sub: 'Please confirm your email address'
+  messages:
+    email_already_confirmed: 'Email already confimed'
+    email_token_invalid: 'Email confirmation token is invlid'
+    email_token_expired: 'Sorry your email token expired please retry'
+    email_confirmed: 'Congatulations, your email has been confirmed'

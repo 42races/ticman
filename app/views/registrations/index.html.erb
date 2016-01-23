@@ -1,0 +1,29 @@
+<table>
+  <thead>
+    <tr>
+        <th data-field="name">Organization</th>
+        <th data-field="email">Email</th>
+        <th data-field="created_at">Created At</th>
+        <th data-field="confirmed_at">Confirmed At</th>
+        <th data-field="status">Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @registrations.each do |reg| %>
+      <tr>
+        <td><%= reg.organization_name %></td>
+        <td><%= reg.email %></td>
+        <td><%= reg.created_at %></td>
+        <td><%= reg.confirmed_at %></td>
+        <td>
+          <% if reg.confirmed? %>
+            <i class="material-icons">add</i>
+          <% else %>
+            <i class="material-icons">add</i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

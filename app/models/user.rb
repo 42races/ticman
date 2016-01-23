@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :password, :password_confirmation
 
+  has_one    :registration
   belongs_to :organization
 
   validates :role, presence: true
