@@ -4,15 +4,26 @@ class Organization < ActiveRecord::Base
 
   validates :name, presence: true
 
-  def self.provision!(user)
+  # begin ClassMethods
+  def self.provision!(reg)
     org = Organization.new do |f|
-      f.name = user.name
+      f.name = reg.organization_name
     end
 
-    # add user as admin of the organization
-    if org.save
-      user.organization = org
-      user.save
+    create_admin_for_organization(reg, org) if org.save
+  end
+
+  def self.create_admin_for_organization(reg, org)
+    admin = User.new do |u|
+      u.email = reg.email
+      u.role  = 'admin'
+      u.organization = org
+    end
+
+    if admin.save
+      reg.mark_as_registered!(org, admin)
     end
   end
+  # end ClassMethods
+
 end

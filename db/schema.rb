@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160123091642) do
+ActiveRecord::Schema.define(version: 20160204182309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,10 +30,14 @@ ActiveRecord::Schema.define(version: 20160123091642) do
     t.string   "email_confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "email_confirmation_sent_at"
+    t.integer  "user_id"
+    t.integer  "organization_id"
   end
 
   add_index "registrations", ["email"], name: "index_registrations_on_email", unique: true, using: :btree
   add_index "registrations", ["email_confirmation_token"], name: "index_registrations_on_email_confirmation_token", unique: true, using: :btree
+  add_index "registrations", ["organization_id"], name: "index_registrations_on_organization_id", using: :btree
+  add_index "registrations", ["user_id"], name: "index_registrations_on_user_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -58,5 +62,7 @@ ActiveRecord::Schema.define(version: 20160123091642) do
   add_index "users", ["email_confirmation_token"], name: "index_users_on_email_confirmation_token", unique: true, using: :btree
   add_index "users", ["organization_id"], name: "index_users_on_organization_id", using: :btree
 
+  add_foreign_key "registrations", "organizations"
+  add_foreign_key "registrations", "users"
   add_foreign_key "users", "organizations"
 end

@@ -28,4 +28,10 @@ class Registration < ActiveRecord::Base
     self.email_confirmation_token = Service.reference_code(email)
     self.save(validates: false)
   end
+
+  def mark_as_registered!(org, admin)
+    self.organization = org
+    self.user         = admin
+    self.save
+  end
 end
