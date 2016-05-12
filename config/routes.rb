@@ -8,5 +8,7 @@ Rails.application.routes.draw do
 
   resources :passwords, only: [:edit, :update]
 
+  resources :dashboard, only: [:index]
+
   root 'pages#index'
 end
