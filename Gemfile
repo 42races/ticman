@@ -55,3 +55,4 @@ end
 gem 'simplecov', :require => false, :group => :test
 gem 'materialize-sass'
 gem 'react-rails'
+gem 'mongoid', '~> 5.1.0'
