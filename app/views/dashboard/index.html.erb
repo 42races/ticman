@@ -10,11 +10,13 @@
 <div class="row">
   <div class="col s12 m12">
     <div class="chip">Total <%= @tics.count %> events found. </div>
+    <%= paginate @tics %>
     <ul class="collection">
       <% @tics.each do |tic| %>
         <li class="collection-item"><%= display(tic) %></li>
       <% end %>
     </ul>
+    <%= paginate @tics %>
   </div>
 </div>
 

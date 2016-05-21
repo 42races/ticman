@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
   def index
-    @tics = Tic.all
+    @tics = Tic.page(params[:page])
   end
 end
