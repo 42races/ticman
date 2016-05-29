@@ -32,8 +32,8 @@ class RegistrationsController < ApplicationController
     if @reg.expired?
       redirect_to root_path, notice: I18n.t(:email_token_expired)
     elsif @reg.confirm!
-      Organization.provision!(@reg)
-      redirect_to edit_password_path(@reg), notice: I18n.t(:email_confirmed)
+      admin = Organization.provision!(@reg)
+      redirect_to edit_password_path(admin), notice: I18n.t(:email_confirmed)
     else
       redirect_to root_path, notice: I18n.t(:email_already_confirmed)
     end

@@ -23,6 +23,8 @@ class Organization < ActiveRecord::Base
     if admin.save
       reg.mark_as_registered!(org, admin)
     end
+
+    admin
   end
   # end ClassMethods
 
