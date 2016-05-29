@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160204182309) do
+ActiveRecord::Schema.define(version: 20160529162918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,13 +25,14 @@ ActiveRecord::Schema.define(version: 20160204182309) do
   create_table "registrations", force: :cascade do |t|
     t.string   "organization_name"
     t.string   "email"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "email_confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "email_confirmation_sent_at"
     t.integer  "user_id"
     t.integer  "organization_id"
+    t.integer  "registration_email_count",   default: 0
   end
 
   add_index "registrations", ["email"], name: "index_registrations_on_email", unique: true, using: :btree

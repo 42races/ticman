@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     collection do
       get :confirm_email
     end
+
+    member do
+      get :resend_email_confirmation
+    end
   end
 
   resources :passwords, only: [:edit, :update]
@@ -11,4 +15,6 @@ Rails.application.routes.draw do
   resources :dashboard, only: [:index]
 
   root 'pages#index'
+
+  get '/test', to: "pages#test"
 end
