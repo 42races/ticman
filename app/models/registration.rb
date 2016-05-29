@@ -24,14 +24,22 @@ class Registration < ActiveRecord::Base
     self.email_confirmation_token = Service.reference_code(email)
   end
 
-  def reset_confirmation_token!
+  def reset_confirmation_token
     self.email_confirmation_token = Service.reference_code(email)
-    self.save(validates: false)
   end
 
   def mark_as_registered!(org, admin)
     self.organization = org
     self.user         = admin
     self.save
+  end
+
+  def email_confirmation_sent_recently?
+    !(registration_email_count < 5) && (email_confirmation_sent_at > 1.minute.ago)
+  end
+
+  def resend_email_confirmation!
+    return if email_confirmation_sent_recently?
+    RegistrationMailer.email_confirmation(self.id).deliver_now
   end
 end

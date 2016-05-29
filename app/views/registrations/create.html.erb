@@ -1,2 +1,13 @@
-<h1>Registrations#create</h1>
-<p>Find me in app/views/registrations/create.html.erb</p>
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title black-text">Thank you</span>
+        <p>We have sent you a verification email to the email you have provided, please check the inbox and follow the instruction to complete the registration.</p>
+      </div>
+      <div class="card-action">
+        Didn't receive verification email? <a href="<%= resend_email_confirmation_registration_path(@reg)%>">RESEND</a>
+      </div>
+    </div>
+  </div>
+</div>

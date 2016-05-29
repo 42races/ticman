@@ -20,6 +20,12 @@ class RegistrationsController < ApplicationController
     end
   end
 
+  def resend_email_confirmation
+    @reg = Registration.find(params[:id])
+    @reg.resend_email_confirmation!
+    render action: :create
+  end
+
   def confirm_email
     load_registration
 
