@@ -35,7 +35,7 @@ class Registration < ActiveRecord::Base
   end
 
   def email_confirmation_sent_recently?
-    !(registration_email_count < 5) && (email_confirmation_sent_at > 1.minute.ago)
+    !(registration_email_count < 5) && (email_confirmation_sent_at > 5.minute.ago)
   end
 
   def resend_email_confirmation!
