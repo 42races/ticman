@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col s4">
+    <p> Change password </p>
+
+    <%= form_tag password_path(@user), method: 'put' do %>
+
+      <p>
+        <label>Password</label>
+        <%= password_field_tag :password, '', name: 'user[password]' %>
+      </p>
+
+      <p>
+        <label>Retype password</label>
+        <%= password_field_tag :password_confirmation, '', name: 'user[password]' %>
+      <p>
+        <%= submit_tag 'Change password', class: 'btn' %>
+    <% end %>
+  </div>
+</div>
