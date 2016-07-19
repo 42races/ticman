@@ -4,7 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def home_path
-    root_path
+    if user_signed_in?
+      dashboard_index_path
+    else
+      root_path
+    end
   end
 
   def user_signed_in?
@@ -16,7 +20,13 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id])
   end
 
-  helper_method :home_page
+  helper_method :home_path
   helper_method :user_signed_in?
   helper_method :current_user
+
+  private
+
+  def authenticate_user!
+    redirect_to home_path unless user_signed_in?
+  end
 end
