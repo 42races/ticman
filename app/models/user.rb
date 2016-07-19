@@ -1,14 +1,16 @@
 class User < ActiveRecord::Base
-
-  attr_accessor :password, :password_confirmation
+  has_secure_password
 
   has_one    :registration
   belongs_to :organization
 
+  validates :email, presence: true
   validates :role, presence: true
   validates :role, inclusion: {
     in: Role::ROLES
   }
+
+  validates :password, length: { minimum: 6, maximum: 30 }, allow_nil: true
 
   Role::ROLES.each do |role|
     define_method "#{role}?".to_sym do

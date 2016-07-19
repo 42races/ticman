@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :dashboard, only: [:index]
 
+  resource :sessions, only: [:new, :create, :destroy]
+
   root 'pages#index'
 
   get '/test', to: "pages#test"

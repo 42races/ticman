@@ -7,5 +7,16 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
+  def user_signed_in?
+    session[:user_id].present?
+  end
+
+  def current_user
+    return if user_signed_in?
+    @current_user ||= User.find(session[:user_id])
+  end
+
   helper_method :home_page
+  helper_method :user_signed_in?
+  helper_method :current_user
 end

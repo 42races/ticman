@@ -14,14 +14,16 @@ class Organization < ActiveRecord::Base
   end
 
   def self.create_admin_for_organization(reg, org)
-    admin = User.new do |u|
-      u.email = reg.email
-      u.role  = 'admin'
-      u.organization = org
-    end
+    admin = User.build_new_user({
+      email: reg.email,
+      role: 'admin'
+    })
+
+    admin.organization = org
 
     if admin.save
       reg.mark_as_registered!(org, admin)
+      admin.confirm_email!
     end
 
     admin
