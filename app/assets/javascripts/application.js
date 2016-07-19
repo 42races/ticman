@@ -28,5 +28,9 @@
       selectYears: 15 // Creates a dropdown of 15 years to control year
     });
 
+    $('#tic-search-icon').click(function(){
+      $('#tic-search-form').submit();
+    });
+
   }); // end of document ready
 })(jQuery); // end of jQuery name space

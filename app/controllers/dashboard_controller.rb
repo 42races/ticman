@@ -6,7 +6,7 @@ class DashboardController < ApplicationController
   end
 
   def search
-    @results = SearchEngine.search(params[:query])
+    @tics = SearchEngine.search(params[:query]).page(params[:page])
     render action: :index
   end
 end

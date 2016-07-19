@@ -12,7 +12,11 @@ Rails.application.routes.draw do
 
   resources :passwords, only: [:edit, :update]
 
-  resources :dashboard, only: [:index]
+  resources :dashboard, only: [:index] do
+    collection do
+      get :search
+    end
+  end
 
   resource :sessions, only: [:new, :create, :destroy]
 
