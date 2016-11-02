@@ -1,3 +1,5 @@
+module Lexer
+
 %%{
 
   machine query_lexer;
@@ -8,7 +10,7 @@
   punctuation = '(' | ')';
   operator = '<' | '>' | '<=' | '>=' | '=' | '!';
   keyword = ('and' | 'or');
-  field = lower+;
+  field = lower(lower|'_')+lower;
 
   main := |*
     space;
@@ -57,16 +59,21 @@
 
 }%%
 
+
 def run_lexer(data)
   data = data.unpack("c*") if(data.is_a?(String))
   eof = data.length
   token_array = []
 
+  %% write data;
   %% write init;
   %% write exec;
 end
 
 def emit(token_type, value)
+  # @override this method in the included class
+  # Collect tokens in an array of tokens
+
   tok_data = {
     token_type: token_type,
     value: value
@@ -75,4 +82,4 @@ def emit(token_type, value)
   puts tok_data
 end
 
-%% write data;
+end
